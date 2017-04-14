@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -30,6 +31,9 @@ namespace RIN_Console
             //progrBar();
             //Console.Clear();
             Console.WriteLine("Jméno herního charakteru je: " + Batrachus.get_jmeno_());
+            typeLine("Jméno herního charakteru je: ");
+            Console.Write(Batrachus.get_jmeno_());
+            Console.WriteLine();
             //Console.WriteLine(Batrachus.getJmeno());
             //Batrachus.setJmeno("_Batrachus_");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -44,13 +48,15 @@ namespace RIN_Console
             Table.PrintRow(pole);
             Table.PrintLine();
             Console.ReadKey();
-
-            String[,] pole2 = new String[200, 200];
         }
+
+
+
 
         private void preloader()
         {
             Console.CursorVisible = false;
+
             //Thread threadSketchIn = new Thread(new ThreadStart(runSketchInSpecLine));
             //Thread threadProgrBar = new Thread(new ThreadStart(runProgrBar));
             //Thread threadTheRestLines = new Thread(new ThreadStart(runSketchInTheRestLines));
@@ -58,33 +64,8 @@ namespace RIN_Console
             //Thread threadSketchTitle = new Thread(new ThreadStart(runSketchTitle));
 
             // n = 25
-            
-            for (int n = 12; n > 0; n--)
-            {
-                for (int i = 118; i > 0; i--)
-                {
-                    if (n > 0 && n != 1)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.Write("█");
 
 
-                    }
-                    if (n == 1)
-                    {
-                        Console.Write("█");
-
-                    }
-                    if (n == 0)
-                    {
-                        Console.Write("██");
-                    }
-
-                }
-                if (n != 1)
-                    Console.Write("█\r\n");
-            }
-            
 
 
             //Console.Write("█");
@@ -111,24 +92,109 @@ namespace RIN_Console
             //runSketchInSpecLine();
             //threadTheRestLines();
 
-            Thread.Sleep(500);
+            Thread.Sleep(750);
 
             Console.ResetColor();
             Console.Clear();
-
             //Thread.Yield();
+        }
+
+        static void writeRow()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            for (int i = 119; i > 0; i--)
+            {
+                Console.Write("█");
+            }
         }
 
         static void firstHalfOfScreen()
         {
+            for (int n = 12; n > 0; n--)
+            {
+                for (int i = 118; i > 0; i--)
+                {
+                    if (n > 0 && n != 1)
+                    {
 
+                        Console.Write("█");
+
+
+                    }
+                    if (n == 1)
+                    {
+                        Console.Write("█");
+
+                    }
+                    if (n == 0)
+                    {
+                        Console.Write("█");
+                    }
+
+                }
+                if (n != 0)
+                {
+                    Console.Write("█\r\n");
+                }
+
+            }
+
+            writeRow();
         }
-        
+          
         static void secondHalfOfScreen()
         {
-
+            Console.ForegroundColor = ConsoleColor.Gray;
+           
+            // 30 - 12 = 18 => (celkový počet řádku v konzoli ve výchozí velikosti) - (mezera před prealoder nadpisem) =(zbylé volné řádky)
+            // 30 - 18 =  5
+            // 12 + 5 = 17
+            // 12 + 5 = 17 => zapisovat se bude na 17 řádce
+            for (int m = 13; m > 0; m--)
+            {
+                for (int q = 118; q > 0; q--)
+                {
+                    Console.Write("█");
+                }
+                Console.Write("█\r\n");
+            }
+            Console.ResetColor();
         }
 
+        static void titleOfScreen()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.Write(@"
+                    ██████╗ ██╗███╗   ██╗     ██████╗ ██████╗ ███╗   ██╗███████╗ ██████╗ ██╗     ███████╗              
+                    ██╔══██╗██║████╗  ██║    ██╔════╝██╔═══██╗████╗  ██║██╔════╝██╔═══██╗██║     ██╔════╝              
+                    ██████╔╝██║██╔██╗ ██║    ██║     ██║   ██║██╔██╗ ██║███████╗██║   ██║██║     █████╗                
+                    ██╔══██╗██║██║╚██╗██║    ██║     ██║   ██║██║╚██╗██║╚════██║██║   ██║██║     ██╔══╝                
+                    ██║  ██║██║██║ ╚████║    ╚██████╗╚██████╔╝██║ ╚████║███████║╚██████╔╝███████╗███████╗              
+                    ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚══════╝╚══════╝              ");
+            Console.ResetColor();
+            Console.WriteLine();
+        }
+
+        static void setCursor(int top, int left)
+        {
+
+            int pTop = Console.CursorTop;
+            int pLeft = Console.CursorLeft;
+            pLeft = left;
+            pTop = top;
+            Console.SetCursorPosition(pLeft, pTop);
+        }
+
+        static void typeLine(string line)
+        {
+            for (int i = 0; i < line.Length; i++)
+            {
+                Console.Write(line[i]);
+                Thread.Sleep(40); // Sleep for 150 milliseconds
+            }
+        }
+        /*
         static void runProgrBar()
         {           
             //setCursor(22, 0);
@@ -171,110 +237,8 @@ namespace RIN_Console
             Console.ResetColor();
 
         }
-
-        static void writeLoadingTitle()
-        {
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.Write("RIN Console Loading...");
-            Console.ResetColor();
-
-        }
-
-        static void runSketchInDIffSpecLine()
-        {
-            //setCursor(15, 0);
-            //95 použitelných řádek
-            for (int i = 47; i > 0; i--)
-            {
-                if (i > 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("█");
-                }
-
-            }
-
-            Console.ResetColor();
-            writeLoadingTitle();
-
-            for (int i = 47; i > 0; i--)
-            {
-
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("█");
-
-            }
-            Console.ResetColor();
-            Thread.Yield();
-
-        }
-
-        static void runSketchInSpecLine()
-        {
-
-            for (int c = 46; c > 0; c--)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("█");
-                Console.ResetColor();
-
-            }
-
-
-        }
-
-        static void runSketchInTheRestLines()
-        {
-            Console.ForegroundColor = ConsoleColor.Gray;
-            int pLeft = Console.CursorLeft;
-            int pTop = Console.CursorTop;
-            pLeft = 0;
-            pTop = 21;
-            Console.SetCursorPosition(pLeft, pTop);
-
-            // 30 - 12 = 18 => (celkový počet řádku v konzoli ve výchozí velikosti) - (mezera před prealoder nadpisem) =(zbylé volné řádky)
-            // 30 - 18 =  5
-            // 12 + 5 = 17
-            // 12 + 5 = 17 => zapisovat se bude na 17 řádce
-            for (int m = 13; m > 0; m--)
-            {
-                for (int q = 115; q > 0; q--)
-                {
-                    Console.Write("█");
-                }
-                Console.Write("█\r\n");
-            }
-            Console.ResetColor();
-            Thread.Yield();
-
-
-        }
-
-        static void titleOfScreen()
-        {
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.Write(@"
-                    ██████╗ ██╗███╗   ██╗     ██████╗ ██████╗ ███╗   ██╗███████╗ ██████╗ ██╗     ███████╗              
-                    ██╔══██╗██║████╗  ██║    ██╔════╝██╔═══██╗████╗  ██║██╔════╝██╔═══██╗██║     ██╔════╝              
-                    ██████╔╝██║██╔██╗ ██║    ██║     ██║   ██║██╔██╗ ██║███████╗██║   ██║██║     █████╗                
-                    ██╔══██╗██║██║╚██╗██║    ██║     ██║   ██║██║╚██╗██║╚════██║██║   ██║██║     ██╔══╝                
-                    ██║  ██║██║██║ ╚████║    ╚██████╗╚██████╔╝██║ ╚████║███████║╚██████╔╝███████╗███████╗              
-                    ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚══════╝╚══════╝              ");
-            Console.ResetColor();
-        }
-
-        static void setCursor(int top, int left)
-        {
-
-            int pTop = Console.CursorTop;
-            int pLeft = Console.CursorLeft;
-            pLeft = left;
-            pTop = top;
-            Console.SetCursorPosition(pLeft, pTop);
-        }
- }
+      */
+    }
 
 }
 
