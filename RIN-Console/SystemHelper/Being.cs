@@ -125,12 +125,88 @@ namespace RIN_Console.SystemHelper
                     int poskZb = 0;
                     switch (castTela[indexCT])
                     {
-                        case "Levé oko":
-                        case "Pravé oko":
-                        case "Ústa":
-                        case "Levé ucho":
-                        case "Pravé ucho":
-                        case "Nos":
+                    case "Levé oko":
+                        poskZb = getZbTvar() - h_nicivost;
+                        if (poskZb < 0)
+                        {
+                            string poskAZ = "0";
+                            setZbTvar(poskAZ);
+                        }
+                        else
+                        {
+                            string poskZbS = string.Empty + poskZb;   // poskZbS = poškození zbroje soupeře
+                            setZbTvar(poskZbS);
+                        }
+                        int aktHPnos = getHpTvar() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                        string aktHPnosS = string.Empty + aktHPnos;
+                        setHpNos(aktHPnosS);
+                        break;
+
+                    case "Pravé oko":
+                        poskZb = getZbTvar() - h_nicivost;
+                        if (poskZb < 0)
+                        {
+                            string poskAZ = "0";
+                            setZbTvar(poskAZ);
+                        }
+                        else
+                        {
+                            string poskZbS = string.Empty + poskZb;   // poskZbS = poškození zbroje soupeře
+                            setZbTvar(poskZbS);
+                        }
+                        int aktHPleveOko = getHpLeveChodilo() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                        string aktHPustaS = string.Empty + aktHPleveOko;
+                        setHpLeveOko(aktHPustaS);
+                        break;
+                    case "Ústa":
+                        poskZb = getZbTvar() - h_nicivost;
+                        if (poskZb < 0)
+                        {
+                            string poskAZ = "0";
+                            setZbTvar(poskAZ);
+                        }
+                        else
+                        {
+                            string poskZbS = string.Empty + poskZb;   // poskZbS = poškození zbroje soupeře
+                            setZbTvar(poskZbS);
+                        }
+                        int aktHPusta = getHpUsta() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                        string aktHpUstaS = string.Empty + aktHPusta;
+                        setHpLeveOko(aktHpUstaS);
+                        break;
+                    case "Levé ucho":
+                        poskZb = getZbTvar() - h_nicivost;
+                        if (poskZb < 0)
+                        {
+                            string poskAZ = "0";
+                            setZbTvar(poskAZ);
+                        }
+                        else
+                        {
+                            string poskZbS = string.Empty + poskZb;   // poskZbS = poškození zbroje soupeře
+                            setZbTvar(poskZbS);
+                        }
+                        int aktHPleveUcho = getHpLeveChodilo() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                        string aktHPleveUchoS = string.Empty + aktHPleveUcho;
+                        setHpLeveUcho(aktHPleveUchoS);
+                        break;
+                    case "Pravé ucho":
+                        poskZb = getZbTvar() - h_nicivost;
+                        if (poskZb < 0)
+                        {
+                            string poskAZ = "0";
+                            setZbTvar(poskAZ);
+                        }
+                        else
+                        {
+                            string poskZbS = string.Empty + poskZb;   // poskZbS = poškození zbroje soupeře
+                            setZbTvar(poskZbS);
+                        }
+                        int aktHPPraveOko = getHpLeveChodilo() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                        string aktHPPraveUchoS = string.Empty + aktHPPraveOko;
+                        setHpLeveOko(aktHPPraveUchoS);
+                        break;
+                    case "Nos":
                             poskZb = getZbTvar() - h_nicivost;
                             if (poskZb < 0)
                             {
@@ -142,10 +218,11 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;   // poskZbS = poškození zbroje soupeře
                                 setZbTvar(poskZbS);
                             }
-                            int aktHPNos = h_pruraznost;   //************* getHpTvar() - h_pruraznost;
-                            break;
+                            int aktHPNos = getHpLeveChodilo() - (h_pruraznost/getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                            string aktHPNosS = string.Empty + aktHPNos;
+                            setHpNos(aktHPNosS);
+                        break;
                         case "Levá ruka":
-                            poskZb = getZbTorzo() - zasah;
                             poskZb = getZbTorzo() - zasah;
                             if (poskZb < 0)
                             {
@@ -157,6 +234,11 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbTorzo(poskZbS);
                             }
+
+                            int aktHPLevaRuka = getHpLeveChodilo() - (h_pruraznost/getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                            string aktHPLevaRukaS = string.Empty + aktHPLevaRuka;
+                            setHpLevaRuka(aktHPLevaRukaS);
+                            
                             break;
                         case "Pravá ruka":
                             poskZb = getZbTorzo() - zasah;
@@ -171,9 +253,13 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbTorzo(poskZbS);
                             }
+
+                            int aktHPPravaRuka = getHpPravaRuka() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                            string aktHPPravaRukaS = string.Empty + aktHPPravaRuka;
+                            setHpLevaRuka(aktHPPravaRukaS);
                             break;
                         case "Levá dlaň":
-                            poskZb = getZbLevaRukavice() - zasah;
+                            poskZb = getZbLevaChodidlo() - zasah;
                             if (poskZb < 0)
                             {
                                 string poskAZ = "0";
@@ -184,6 +270,10 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbLevaRukavice(poskZbS);
                             }
+
+                            int aktHPLevaDlan = getHpLeveChodilo() - (h_pruraznost / getZbLevaChodidlo()); //************* getHpTvar() - h_pruraznost
+                            string aktHPLeveChodidloS = string.Empty + aktHPLevaDlan;
+                            setHpLevaDLan(aktHPLeveChodidloS);
                             break;
                         case "Pravá dlaň":
                             poskZb = getZbPravaRukavice() - zasah;
@@ -197,9 +287,14 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbPravaRukavice(poskZbS);
                             }
+
+                            int aktHPPravaDlan = getHpPravaDlan() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                            string aktHPPravaDlanS = string.Empty + aktHPPravaDlan;
+                            setHpPravaRuka(aktHPPravaDlanS);
                             break;
                         case "Prsty na levé dlani":
-                            poskZb = getZbLevaRukavice() - zasah;
+                        // dodělat tenhle 'case' a zároveň i připravit metody aktuálních životů prstů a palců
+                            poskZb = getZbLevaChodidlo() - zasah;
                             if (poskZb < 0)
                             {
                                 string poskAZ = "0";
@@ -212,7 +307,8 @@ namespace RIN_Console.SystemHelper
                             }
                             break;
                         case "Palec na levé dlani":
-                            poskZb = getZbLevaRukavice() - zasah;
+                        // TO DO
+                            poskZb = getZbLevaChodidlo() - zasah;
                             if (poskZb < 0)
                             {
                                 string poskAZ = "0";
@@ -225,6 +321,7 @@ namespace RIN_Console.SystemHelper
                             }
                             break;
                         case "Prsty na pravé dlani":
+                        // TO DO
                             poskZb = getZbPravaRukavice() - zasah;
                             if (poskZb < 0)
                             {
@@ -238,7 +335,8 @@ namespace RIN_Console.SystemHelper
                             }
                             break;
                         case "Palec na pravé dlani":
-                            poskZb = getZbPravaRukavice() - zasah;
+                        // TO DO
+                        poskZb = getZbPravaRukavice() - zasah;
                             if (poskZb < 0)
                             {
                                 string poskAZ = "0";
@@ -262,6 +360,9 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbTorzo(poskZbS);
                             }
+                            int aktHPTorzo = getHpTorzo() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                            string aktHPTorzoS = string.Empty + aktHPTorzo;
+                            setHpLevaRuka(aktHPTorzoS);
                             break;
                         case "Břicho":
                             poskZb = getZbTorzo() - zasah;
@@ -275,6 +376,9 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbTorzo(poskZbS);
                             }
+                            int _aktHPTorzo = getHpTorzo() - (h_pruraznost / getZbTorzo()); //************* getHpTvar() - h_pruraznost
+                            string _aktHPTorzoS = string.Empty + _aktHPTorzo;
+                            setHpLevaRuka(_aktHPTorzoS);
                             break;
                         case "Levá noha":
                             poskZb = getZbLevaNoha() - zasah;
@@ -288,6 +392,9 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbLevaNoha(poskZbS);
                             }
+                            int aktHPLevaNoha = getHpLevaNoha() - (h_pruraznost / getZbLevaNoha()); //************* getHpTvar() - h_pruraznost
+                            string aktHPLevaNohaS = string.Empty + aktHPLevaNoha;
+                            setHpLevaRuka(aktHPLevaNohaS);
                             break;
                         case "Pravá noha":
                             poskZb = getZbPravaNoha() - zasah;
@@ -301,6 +408,9 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbPravaNoha(poskZbS);
                             }
+                            int aktHPPravaNoha = getHpPravaNoha() - (h_pruraznost / getZbPravaNoha()); //************* getHpTvar() - h_pruraznost
+                            string aktHPPravaNohaS = string.Empty + aktHPPravaNoha;
+                            setHpLevaRuka(aktHPPravaNohaS);
                             break;
                         case "Levé chodidlo":
                             poskZb = getZbLeveChodidlo() - zasah;
@@ -314,8 +424,12 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbLeveChodidlo(poskZbS);
                             }
+                            int aktHPLeveChodidlo = getHpLeveChodidlo() - (h_pruraznost / getZbLeveChodidlo()); //************* getHpTvar() - h_pruraznost
+                            string _aktHPLeveChodidloS = string.Empty + aktHPLeveChodidlo;
+                            setHpLevaRuka(_aktHPLeveChodidloS);
                             break;
                         case "Prsty na levé noze":
+                        // TO DO
                             poskZb = getZbLeveChodidlo() - zasah;
                             if (poskZb < 0)
                             {
@@ -327,6 +441,11 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbLeveChodidlo(poskZbS);
                             }
+                            /*
+                            int aktHPLeva = getHpLeveChodidlo() - (h_pruraznost / getZbLeveChodidlo()); //************* getHpTvar() - h_pruraznost
+                            string __aktHPLeveChodidloS = string.Empty + aktHPLeva;
+                            setHpLevaDLan(__aktHPLeveChodidloS);
+                            */
                             break;
                         case "Palec na levé noze":
                             poskZb = getZbLeveChodidlo() - zasah;
@@ -340,6 +459,11 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbLeveChodidlo(poskZbS);
                             }
+                            /*
+                            int aktHP = getHpLeveChodidlo() - (h_pruraznost / getZbLeveChodidlo()); //************* getHpTvar() - h_pruraznost
+                            string __aktHPLeveChodidloS = string.Empty + getHpLeveChodidlo();
+                            setHpLevaDLan(__aktHPLeveChodidloS);
+                            */
                             break;
                         case "Pravé chodidlo":
                             poskZb = getZbPraveChodidlo() - zasah;
@@ -353,8 +477,13 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbPraveChodidlo(poskZbS);
                             }
+                            int aktHPPraveChodidlo = getHpPraveChodidlo() - (h_pruraznost / getZbPraveChodidlo()); //************* getHpTvar() - h_pruraznost
+                            string aktHPPraveChodidloS = string.Empty + aktHPPraveChodidlo;
+                            setHpLevaDLan(aktHPPraveChodidloS);
+
                             break;
                         case "Prsty na pravé noze":
+                        // TO DO
                             poskZb = getZbPraveChodidlo() - zasah;
                             if (poskZb < 0)
                             {
@@ -366,8 +495,15 @@ namespace RIN_Console.SystemHelper
                                 string poskZbS = string.Empty + poskZb;
                                 setZbPraveChodidlo(poskZbS);
                             }
+                            /*
+                            int aktHP = getHpLeveChodidlo() - (h_pruraznost / getZbLeveChodidlo()); //************* getHpTvar() - h_pruraznost
+                            string __aktHPLeveChodidloS = string.Empty + getHpLeveChodidlo();
+                            setHpLevaDLan(__aktHPLeveChodidloS);
+                            */
+
                             break;
                         case "Palec na pravé noze":
+                        // TO DO
                             poskZb = getZbPraveChodidlo() - zasah;   //současný stav zbroje, může nabývat i záporných hodnot
                             if (poskZb < 0)
                             {
@@ -402,7 +538,18 @@ namespace RIN_Console.SystemHelper
                 }
 
             }
-            protected void NastavZpravu(string zprava)
+
+        private void setHpLevaDLan(string aktHPLevaDlanS)
+        {
+            throw new NotImplementedException();
+        }
+
+        private int getHpPravaDlan()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected void NastavZpravu(string zprava)
             {
                 this.zprava = zprava;
             }
@@ -470,9 +617,134 @@ namespace RIN_Console.SystemHelper
                 File.WriteAllLines(fName, arrLine);
         }
 
-            /*******************************   ŽIVOTY ****************************************************/
-            /*********************************************************************************************/
-            protected int getHpHlava()       
+        /*******************************   ŽIVOTY ****************************************************/
+        /*********************************************************************************************/
+
+        //case "Levé oko":  case "Pravé oko": case "Ústa": case "Levé ucho":   case "Pravé ucho":  case "Nos":
+
+        protected void setHpLeveOko(string newText)
+        {
+
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
+
+        protected int getHpPraveOko()
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            using (var sr = new StreamReader(fName))
+            {
+                for (int i = 1; i < line; i++)
+                    sr.ReadLine();
+                return int.Parse(sr.ReadLine());
+            }
+        }
+
+        protected void setHpPraveOko(string newText)
+        {
+
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
+
+        protected int getHpUsta()
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            using (var sr = new StreamReader(fName))
+            {
+                for (int i = 1; i < line; i++)
+                    sr.ReadLine();
+                return int.Parse(sr.ReadLine());
+            }
+        }
+
+        protected void setHpUsta(string newText)
+        {
+
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
+
+        protected int getHpLeveUcho()
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            using (var sr = new StreamReader(fName))
+            {
+                for (int i = 1; i < line; i++)
+                    sr.ReadLine();
+                return int.Parse(sr.ReadLine());
+            }
+        }
+
+        protected void setHpLeveUcho(string newText)
+        {
+
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
+
+        protected int getHpPraveUcho()
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            using (var sr = new StreamReader(fName))
+            {
+                for (int i = 1; i < line; i++)
+                    sr.ReadLine();
+                return int.Parse(sr.ReadLine());
+            }
+        }
+
+        protected void setHpPraveUcho(string newText)
+        {
+
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
+
+
+        protected int getHpNos()
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            using (var sr = new StreamReader(fName))
+            {
+                for (int i = 1; i < line; i++)
+                    sr.ReadLine();
+                return int.Parse(sr.ReadLine());
+            }
+        }
+
+        protected void setHpNos(string newText)
+        {
+
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 20;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
+
+        /****** */
+        protected int getHpHlava()       
             {
                     string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
                     int line = 20;
@@ -518,8 +790,7 @@ namespace RIN_Console.SystemHelper
                 File.WriteAllLines(fName, arrLine);
             }
 
-
-            protected int getHpLevaDlane()
+            protected int getHpLeveChodilo()
             {
                 string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
                 int line = 20;
@@ -532,162 +803,206 @@ namespace RIN_Console.SystemHelper
 
             }
 
-            protected void setHpPravaDlane(string newText)
-            {
+                protected void setHpLevaDlan(string newText)
+                {
 
                 string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
                 int line = 20;
                 string[] arrLine = File.ReadAllLines(fName);
                 arrLine[line - 1] = newText;
                 File.WriteAllLines(fName, arrLine);
-            }
-
-
-            protected int getHpPravaDlane()
-            {
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                using (var sr = new StreamReader(fName))
-                {
-                    for (int i = 1; i < line; i++)
-                        sr.ReadLine();
-                    return int.Parse(sr.ReadLine());
                 }
 
-            }
-
-            protected void setHpLevaDlane(string newText)
-            {
-
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                string[] arrLine = File.ReadAllLines(fName);
-                arrLine[line - 1] = newText;
-                File.WriteAllLines(fName, arrLine);
-            }
-
-
-
-            protected int getHpLevaNoha()
-            {
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                using (var sr = new StreamReader(fName))
+                protected int getHPPravaDlan()
                 {
-                    for (int i = 1; i < line; i++)
-                        sr.ReadLine();
-                    return int.Parse(sr.ReadLine());
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
                 }
 
-            }
-
-            protected void setHpLevaNoha(string newText)
-            {
-
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                string[] arrLine = File.ReadAllLines(fName);
-                arrLine[line - 1] = newText;
-                File.WriteAllLines(fName, arrLine);
-            }
-
-
-            protected int getHpPravaNoha()
-            {
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                using (var sr = new StreamReader(fName))
+                protected void setHpPravaDlan(string newText)
                 {
-                    for (int i = 1; i < line; i++)
-                        sr.ReadLine();
-                    return int.Parse(sr.ReadLine());
+
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
                 }
 
-            }
 
-            protected void setHpPravaNoha(string newText)
-            {
-
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                string[] arrLine = File.ReadAllLines(fName);
-                arrLine[line - 1] = newText;
-                File.WriteAllLines(fName, arrLine);
-            }
-
-
-            protected int getHpLeveChodidlo()
-            {
-                string fName = "../../SystemHelper/txt-char/ " + get_jmeno_() + ".txt";
-                int line = 20;
-                using (var sr = new StreamReader(fName))
+                protected int getHpPravaRuka()
                 {
-                    for (int i = 1; i < line; i++)
-                        sr.ReadLine();
-                    return int.Parse(sr.ReadLine());
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
                 }
 
-            }
+                protected void setHpPravaRuka(string newText)
+                { 
 
-            protected void setHpLeveChodidlo(string newText)
-            {
-
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                string[] arrLine = File.ReadAllLines(fName);
-                arrLine[line - 1] = newText;
-                File.WriteAllLines(fName, arrLine);
-            }
-
-
-
-            protected int getHpPraveChodidlo()
-            {
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                using (var sr = new StreamReader(fName))
-                {
-                    for (int i = 1; i < line; i++)
-                        sr.ReadLine();
-                    return int.Parse(sr.ReadLine());
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
                 }
 
-            }
 
-            protected void setHpPraveChodidlo(string newText)
-            {
-
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                string[] arrLine = File.ReadAllLines(fName);
-                arrLine[line - 1] = newText;
-                File.WriteAllLines(fName, arrLine);
-            }
-
-
-
-            protected int getHpTvar()
-            {
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                using (var sr = new StreamReader(fName))
+                protected int getHpLevaRuka()
                 {
-                    for (int i = 1; i < line; i++)
-                        sr.ReadLine();
-                    return int.Parse(sr.ReadLine());
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
                 }
 
-            }
+                protected void setHpLevaRuka(string newText)
+                {
 
-            protected void setHpTvar(string newText)
-            {
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
+                }
 
-                string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-                int line = 20;
-                string[] arrLine = File.ReadAllLines(fName);
-                arrLine[line - 1] = newText;
-                File.WriteAllLines(fName, arrLine);
-            }
+                protected int getHpLevaNoha()
+                {
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
+                }
+        protected void setHpLevaNoha(string newText)
+                {
+
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
+                }
+
+
+                protected int getHpPravaNoha()
+                {
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
+                }
+
+                protected void setHpPravaNoha(string newText)
+                {
+
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
+                }
+
+
+                protected int getHpLeveChodidlo()
+                {
+                    string fName = "../../SystemHelper/txt-char/ " + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
+                }
+
+                protected void setHpLeveChodidlo(string newText)
+                {
+
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
+                }
+
+
+
+                protected int getHpPraveChodidlo()
+                {
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
+                }
+
+                protected void setHpPraveChodidlo(string newText)
+                {
+
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
+                }
+
+
+
+                protected int getHpTvar()
+                {
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    using (var sr = new StreamReader(fName))
+                    {
+                        for (int i = 1; i < line; i++)
+                            sr.ReadLine();
+                        return int.Parse(sr.ReadLine());
+                    }
+
+                }
+
+                protected void setHpTvar(string newText)
+                {
+
+                    string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+                    int line = 20;
+                    string[] arrLine = File.ReadAllLines(fName);
+                    arrLine[line - 1] = newText;
+                    File.WriteAllLines(fName, arrLine);
+                }
 
 /*******************************   ZBROJ  ****************************************************/
                 protected int getZbHlava()
@@ -738,7 +1053,7 @@ namespace RIN_Console.SystemHelper
             }
 
 
-            protected int getZbLevaRukavice()
+            protected int getZbLevaChodidlo()
             {
                 string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
                 int line = 20;
