@@ -1,0 +1,6 @@
+D:\Sites\projekty\RIN-Console\RIN-Console\obj\Debug\RIN-Console.csprojResolveAssemblyReference.cache
+D:\Sites\projekty\RIN-Console\RIN-Console\bin\Debug\RIN-Console.exe.config
+D:\Sites\projekty\RIN-Console\RIN-Console\bin\Debug\RIN-Console.exe
+D:\Sites\projekty\RIN-Console\RIN-Console\bin\Debug\RIN-Console.pdb
+D:\Sites\projekty\RIN-Console\RIN-Console\obj\Debug\RIN-Console.exe
+D:\Sites\projekty\RIN-Console\RIN-Console\obj\Debug\RIN-Console.pdb
