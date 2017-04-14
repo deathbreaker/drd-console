@@ -29,15 +29,18 @@ namespace RIN_Console
             Console.Clear();
             //progrBar();
             //Console.Clear();
+            Console.WriteLine("Nyní uvidíte výpis z programu =>");
             Console.WriteLine("Jméno herního charakteru je: " + Batrachus.get_jmeno_());
-            typeLine("Jméno herního charakteru je: ");
-            Console.Write(Batrachus.get_jmeno_());
             Console.WriteLine();
+            Console.WriteLine("Nyní uvidíte výpis z txt souboru =>");
+            typeLine("Jméno herního charakteru je: ");
             //Console.WriteLine(Batrachus.getJmeno());
             //Batrachus.setJmeno("_Batrachus_");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(Batrachus.getJmeno());
             Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine("Nyní uvidíte výpis ascii tabulky =>");
             String[] pole = { "Jmeno", "DalsiJmeno", "ZaseJmeno" };
             Table.PrintLine();
             Table.PrintRow(pole);
@@ -46,7 +49,9 @@ namespace RIN_Console
             Table.PrintRow(pole);
             Table.PrintRow(pole);
             Table.PrintLine();
-            
+            Thread.Sleep(1000);
+            Console.WriteLine();
+            Console.WriteLine("Toto je zatím vše co program umí :) ");
 
             SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
 
