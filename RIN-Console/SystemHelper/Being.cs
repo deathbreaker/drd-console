@@ -9,8 +9,8 @@ namespace RIN_Console.SystemHelper
         Kostka dsS = new Kostka(26);
         protected Kostka kostka;
         string[] castTela = new string[27];
-        IDictionary<string, int> zb = new Dictionary<string, int>();
-        IDictionary<string, int> teloHP = new Dictionary<string, int>();
+        //IDictionary<string, int> zb = new Dictionary<string, int>();
+        //IDictionary<string, int> teloHP = new Dictionary<string, int>();
 
         /// Poslední zpráva
         private string zprava;
