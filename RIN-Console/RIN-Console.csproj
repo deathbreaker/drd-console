@@ -76,5 +76,11 @@
     <Content Include="SystemHelper\txt-char\Teclis.txt" />
     <Content Include="SystemHelper\txt-char\Tomas.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SystemHelper\monsterSpec\" />
+    <Folder Include="SystemHelper\monsterType\" />
+    <Folder Include="SystemHelper\npcSpec\" />
+    <Folder Include="SystemHelper\npcType\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

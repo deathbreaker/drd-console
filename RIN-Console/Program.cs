@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Windows.Forms;
 
 namespace RIN_Console
 {
     class Program
     {
-
+        private static bool isclosing = false;
         static void Main(string[] args)
         {
             //Console.WriteLine("╔═╗");
             //Console.WriteLine("╚═╝");
-            //Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Program Prg = new Program();
+
+        Program Prg = new Program();
             Prg.preloader();
 
             SystemHelper.Being Batrachus = new SystemHelper.Being();
@@ -24,7 +23,7 @@ namespace RIN_Console
             SystemHelper.Being Tomas = new SystemHelper.Being();
 
             if (Batrachus.get_jmeno_() == null)
-                Batrachus.editatingPlayer("Batrachus", "Kouzelník", 1);
+                Batrachus.set_jmeno_("Batrachus");
 
 
             Console.Clear();
@@ -47,6 +46,12 @@ namespace RIN_Console
             Table.PrintRow(pole);
             Table.PrintRow(pole);
             Table.PrintLine();
+            
+
+            SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
+
+            while (!isclosing) ;
+
             Console.ReadKey();
         }
 
@@ -96,6 +101,7 @@ namespace RIN_Console
 
             Console.ResetColor();
             Console.Clear();
+            Console.CursorVisible = true;
             //Thread.Yield();
         }
 
@@ -194,6 +200,97 @@ namespace RIN_Console
                 Thread.Sleep(40); // Sleep for 150 milliseconds
             }
         }
+
+        static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            Console.WriteLine("exit");
+            Thread.Sleep(2000);
+        }
+        private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
+
+        {
+
+            // Put your own handler here
+
+            switch (ctrlType)
+            {
+
+                case CtrlTypes.CTRL_C_EVENT:
+                    isclosing = true;
+                    Console.WriteLine("CTRL+C received!");
+                    Thread.Sleep(5000);
+                    break;
+
+
+
+                case CtrlTypes.CTRL_BREAK_EVENT:
+                    isclosing = true;
+                    Console.WriteLine("CTRL+BREAK received!");
+                    Thread.Sleep(2000);
+                    break;
+
+
+
+                case CtrlTypes.CTRL_CLOSE_EVENT:
+                    isclosing = true;
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Green;
+
+                    Console.WriteLine(new string('═', 120 - 1));
+                    Console.WriteLine();
+                    Console.WriteLine("                                                     KREDITS                                                         ");
+                    Console.WriteLine("                                               Author: deathbreaker                                                  ");
+                    Console.WriteLine("         Special thanks to examples of codes inspiration on website www.devbook.cz, stack overflow and my friends!   ");
+                    Console.WriteLine("                                    That help was made this incredible console app!                                 ");
+                    Console.WriteLine();
+                    Console.WriteLine(new string('═', 120 - 1));
+
+                    Thread.Sleep(2000);
+                    Console.ResetColor();
+                    break;
+                case CtrlTypes.CTRL_LOGOFF_EVENT:
+                case CtrlTypes.CTRL_SHUTDOWN_EVENT:
+                    isclosing = true;
+                    Console.WriteLine("User is logging off!");
+                    Thread.Sleep(2000);
+                    break;
+            }
+
+            return true;
+
+        }
+
+        #region unmanaged
+
+        // Declare the SetConsoleCtrlHandler function
+        // as external and receiving a delegate.
+
+        [DllImport("Kernel32")]
+        public static extern bool SetConsoleCtrlHandler(HandlerRoutine Handler, bool Add);
+        // A delegate type to be used as the handler routine
+        // for SetConsoleCtrlHandler.
+
+        public delegate bool HandlerRoutine(CtrlTypes CtrlType);
+
+
+
+        // An enumerated type for the control messages
+
+        // sent to the handler routine.
+
+        public enum CtrlTypes
+        {
+
+            CTRL_C_EVENT = 0,
+            CTRL_BREAK_EVENT,
+            CTRL_CLOSE_EVENT,
+            CTRL_LOGOFF_EVENT = 5,
+            CTRL_SHUTDOWN_EVENT
+
+        }
+        #endregion
         /*
         static void runProgrBar()
         {           

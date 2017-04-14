@@ -12,17 +12,17 @@ namespace RIN_Console
 
         public static void PrintLine()
         {
-            Console.WriteLine(new string('-', tableWidth - 1));
+            Console.WriteLine(new string('═', tableWidth - 1));
         }
 
         public static void PrintRow(params string[] columns)
         {
             int width = (tableWidth - columns.Length) / columns.Length;
-            string row = "|";
+            string row = "║";
 
             foreach (string column in columns)
             {
-                row += AlignCentre(column, width) + "|";
+                row += AlignCentre(column, width) + "║";
             }
 
             Console.WriteLine(row);

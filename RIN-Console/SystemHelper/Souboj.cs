@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace RIN_Console.SystemHelper
 {
     class Souboj
     {
-        /*
+        
 
         private Being hrac;
 
@@ -30,7 +28,7 @@ namespace RIN_Console.SystemHelper
             // původní pořadí
             Being h = hrac;
             Being n = nepritel;
-            Console.WriteLine("Souboj mezi" +);
+            Console.WriteLine("Souboj začíná !");
             Console.WriteLine("Dnes se utkají {0} s {1}! \n", hrac, nepritel);
             // prohození bojovníků
             bool zacinaBojovnik2 = (kostka.hod() <= kostka.VratPocetSten() / 2);
@@ -59,20 +57,20 @@ namespace RIN_Console.SystemHelper
             }
         }
 
-        private void VypisBojovnika(Being h)
+        private void VypisBojovnika(Being b)
         {
-            Console.WriteLine(h);
+            Console.WriteLine(b);
             Console.Write("Zivot: ");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.BackgroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(h.GrafickyZivot());
+            Console.WriteLine(b.GrafickyZivot());
             Console.ResetColor();
-            if (h is NPC)
+            if (b.getStateMagician())
             {
                 Console.Write("Mana:  ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
-                Console.WriteLine(((NPC)h).GrafickaMana());
+                Console.WriteLine(b.GrafickaMana());
                 Console.ResetColor();
             }
         }
@@ -100,6 +98,6 @@ namespace RIN_Console.SystemHelper
             Thread.Sleep(500);
         }
 
-    */
+    
     }
 }

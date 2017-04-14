@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RIN_Console.SystemHelper
 {
-    class NPC
+    class NPC:Being
     {
     }
 }
