@@ -241,7 +241,7 @@ namespace RIN_Console
                     Console.WriteLine(new string('═', 120 - 1));
                     Console.WriteLine();
                     Console.WriteLine("                                                         KREDITS                                                     ");
-                    Console.WriteLine("                 Copyright © 2017 RIN RPG System programmig and idea was created František Petko                     ");
+                    Console.WriteLine("                 Copyright © 2017 RIN RPG System programmig and idea was created by František Petko                  ");
                     Console.WriteLine("         Special thanks to examples of codes inspiration on website www.devbook.cz, stack overflow and my friends!   ");
                     Console.WriteLine("                                    That help was made this incredible console app!                                  ");
                     Console.WriteLine();
