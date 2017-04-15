@@ -6,61 +6,72 @@ using System.Threading.Tasks;
 
 namespace RIN_Console.SystemHelper.trade
 {
-    interface Architekt
+     interface Architekt
     {
+
+        int magenergie { get; set; }
+        int dosah { get; set; }
+        int rozsah { get; set; }
+        int vyvolavani { get; set; }
+        int trvani { get; set; }
+        int prvdKouzla { get; set; }
+        int pocetKouzel { get; set; }
+        //static int zpHP;
+        //static int levelHPModif;
+
 
         void passPrideBeforeFall();
 
-        void passFocusingEgoism();
+         void passFocusingEgoism();
 
-        void passSenseDanger();
+         void passSenseDanger();
 
-        void passSenseTrue();
+         void passSenseTrue();
 
-        void passSenseLie();
+         void passSenseLie();
 
-        void passSenseHalfTrue();
-        void passInstablesness();
+         void passSenseHalfTrue();
+         void passInstablesness();
 
-        void actTrickeryBlessing();
+         void actTrickeryBlessing();
 
-        void actGreenCard();
+         void actGreenCard();
 
-        void actFortOL();
+         void actFortOL();
 
-        void actStrogngoldOL();
+         void actStrogngoldOL();
 
-        void actCastleOL();
+         void actCastleOL();
 
-        void actCitadelOL();
+         void actCitadelOL();
 
-        void PalaceOL();
+         void PalaceOL();
 
-        void demolitionOC();
+         void demolitionOC();
 
-        void portrayalOP();
+         void portrayalOP();
 
-        void inversionOI();
+         void inversionOI();
 
-        void bashFG();
+         void bashFG();
 
-        void fateTransfer();
+         void fateTransfer();
 
-        void split();
+         void split();
 
-        void ilussionShield();
+         void ilussionShield();
 
-        void triumphOfForce();
+         void triumphOfForce();
 
-        void adabtiableObject();
+         void adabtiableObject();
 
-        void adaptableObject();
+         void adaptableObject();
 
-        void adaptableLObject();
+         void adaptableLObject();
 
-        void falseSight();
+         void falseSight();
 
-        void painConversion();
+         void painConversion();
 
 
     }

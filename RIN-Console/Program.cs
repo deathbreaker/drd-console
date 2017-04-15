@@ -7,6 +7,10 @@ namespace RIN_Console
     class Program
     {
         private static bool isclosing = false;
+
+        private static int zpHP = 6;          //základní počet HP u daného herního povolání
+
+        private static int levelHPModif = 0;
         static void Main(string[] args)
         {
             //Console.WriteLine("╔═╗");
@@ -15,43 +19,52 @@ namespace RIN_Console
             Program Prg = new Program();
             Prg.preloader();
 
-            SystemHelper.Being Batrachus = new SystemHelper.Being();
-            SystemHelper.Being Artym = new SystemHelper.Being();
-            SystemHelper.Being Jerrynek = new SystemHelper.Being();
-            SystemHelper.Being Melichar = new SystemHelper.Being();
-            SystemHelper.Being Teclis = new SystemHelper.Being();
-            SystemHelper.Being Tomas = new SystemHelper.Being();
+            SystemHelper.characters.Artym TestArtym = new SystemHelper.characters.Artym();
+            TestArtym.setJmeno("TestArtym");
 
-            if (Batrachus.get_jmeno_() == null)
-                Batrachus.set_jmeno_("Batrachus");
+            if (TestArtym.getJmeno() != null)
+            {
+
+                SystemHelper.characters.Artym Artym = new SystemHelper.characters.Artym("Artym");
+                
+                SystemHelper.characters.Batrachus Batrachus = new SystemHelper.characters.Batrachus();
+                SystemHelper.characters.Jerrynek Jerrynek = new SystemHelper.characters.Jerrynek();
+                SystemHelper.characters.Matej Matej = new SystemHelper.characters.Matej();
+                SystemHelper.characters.Melichar Melichar = new SystemHelper.characters.Melichar();
+                SystemHelper.characters.Teclis Teclis = new SystemHelper.characters.Teclis();
+
+                Batrachus.setJmeno("Batrachus");
+                Console.Clear();
+                //progrBar();
+                //Console.Clear();
+                Console.WriteLine("Výpis z programu.");
+                Console.WriteLine();
+                Console.WriteLine("Nyní uvidíte výpis z txt souboru =>");
+                typeLine("Jméno herního charakteru je: ");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(Batrachus.getJmeno());
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.WriteLine("Nyní uvidíte výpis ascii tabulky =>");
+                String[] pole = { "Jmeno", "DalsiJmeno", "ZaseJmeno" };
+                Table.PrintLine();
+                Table.PrintRow(pole);
+                Table.PrintLine();
+                Table.PrintRow(pole);
+                Table.PrintRow(pole);
+                Table.PrintRow(pole);
+                Table.PrintLine();
+                Thread.Sleep(1000);
+                Console.WriteLine();
+                Console.WriteLine("Toto je zatím vše co program umí :) ");
+
+            }
 
 
             Console.Clear();
-            //progrBar();
-            //Console.Clear();
-            Console.WriteLine("Nyní uvidíte výpis z programu =>");
-            Console.WriteLine("Jméno herního charakteru je: " + Batrachus.get_jmeno_());
-            Console.WriteLine();
-            Console.WriteLine("Nyní uvidíte výpis z txt souboru =>");
-            typeLine("Jméno herního charakteru je: ");
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(Batrachus.getJmeno());
-            Console.ResetColor();
-            Console.WriteLine();
-            Console.WriteLine("Nyní uvidíte výpis ascii tabulky =>");
-            String[] pole = { "Jmeno", "DalsiJmeno", "ZaseJmeno" };
-            Table.PrintLine();
-            Table.PrintRow(pole);
-            Table.PrintLine();
-            Table.PrintRow(pole);
-            Table.PrintRow(pole);
-            Table.PrintRow(pole);
-            Table.PrintLine();
-            Thread.Sleep(1000);
-            Console.WriteLine();
-            Console.WriteLine("Toto je zatím vše co program umí :) ");
-
+            Console.WriteLine("Aktuálně nejsou vytvořený statistiky postav ..");
+                
             SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
 
             while (!isclosing) ;
@@ -243,7 +256,7 @@ namespace RIN_Console
                     Console.WriteLine(new string('═', 120 - 1));
                     Console.WriteLine();
                     Console.WriteLine("                                                         CREDITS                                                     ");
-                    Console.WriteLine("                 Copyright © 2017 RIN RPG System programmig and idea was created by František Petko                  ");
+                    Console.WriteLine("                 Copyright © 2017 RIN RPG System; Programming and idea was created by František Petko                  ");
                     Console.WriteLine("         Special thanks to examples of codes inspiration on website www.devbook.cz, stack overflow and my friends!   ");
                     Console.WriteLine("                                    That help was made this incredible console app!                                  ");
                     Console.WriteLine();

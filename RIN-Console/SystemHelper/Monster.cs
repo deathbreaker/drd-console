@@ -7,27 +7,29 @@ namespace RIN_Console.SystemHelper
     {
         // modifikátor override u rodiče, override u potomka
 
-        public override string get_jmeno_()
+        public override void Utoc(Being souper)
         {
-            return _jmeno_;
+            int zasah = getPresnost() + kostka.hod();
+            int h_pruraznost = getDrtivost();
+            int h_nicivost = getNicivost();
+
+
+            NastavZpravu(string.Format("{0} útočí s úderem prenosti {1} ", _jmeno_, zasah));
+            souper.BranSe(zasah, h_pruraznost, h_nicivost);
         }
 
-        public override void set_jmeno_(string _jmeno_)
-        {
-            this._jmeno_ = _jmeno_;
-        }
-
-
+        /*************************************************************************************************************/
+      
         public override string getJmeno()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 1;
+            int line = 0;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
                     sr.ReadLine();
 
-                jmeno = sr.ReadLine();
+                //jmeno = sr.ReadLine();
 
                 return sr.ReadLine();
             }
@@ -37,7 +39,7 @@ namespace RIN_Console.SystemHelper
         protected override void setJmeno(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 1;
+            int line = 0;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -47,7 +49,7 @@ namespace RIN_Console.SystemHelper
         protected override int getUroven()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 1;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -59,7 +61,7 @@ namespace RIN_Console.SystemHelper
         protected override void setUroven(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 1;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -68,7 +70,7 @@ namespace RIN_Console.SystemHelper
         protected override int getRasa()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 2;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -80,7 +82,7 @@ namespace RIN_Console.SystemHelper
         protected override void setRasa(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 2;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -89,7 +91,7 @@ namespace RIN_Console.SystemHelper
         protected override int getProfession()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 3;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -101,7 +103,7 @@ namespace RIN_Console.SystemHelper
         protected override void setProfession(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 3;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -110,7 +112,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZK()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 4;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -122,7 +124,7 @@ namespace RIN_Console.SystemHelper
         protected override void setZK(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 4;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -134,7 +136,7 @@ namespace RIN_Console.SystemHelper
         protected override int getSil()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 5;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -146,7 +148,7 @@ namespace RIN_Console.SystemHelper
         protected override void setSil(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 5;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -155,7 +157,7 @@ namespace RIN_Console.SystemHelper
         protected override int getObr()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 6;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -167,7 +169,7 @@ namespace RIN_Console.SystemHelper
         protected override void setObr(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 6;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -176,7 +178,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZruc()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 7;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -188,7 +190,7 @@ namespace RIN_Console.SystemHelper
         protected override void setZruc(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 7;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -197,7 +199,7 @@ namespace RIN_Console.SystemHelper
         protected override int getOdl()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 8;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -209,7 +211,7 @@ namespace RIN_Console.SystemHelper
         protected override void setOdl(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 8;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -218,7 +220,7 @@ namespace RIN_Console.SystemHelper
         protected override int getRoz()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 9;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -230,7 +232,7 @@ namespace RIN_Console.SystemHelper
         protected override void setRoz(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 9;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -239,7 +241,7 @@ namespace RIN_Console.SystemHelper
         protected override int getDuvt()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 10;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -251,7 +253,7 @@ namespace RIN_Console.SystemHelper
         protected override void setDuvt(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 10;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -260,7 +262,7 @@ namespace RIN_Console.SystemHelper
         protected override int getVul()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 11;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -272,7 +274,7 @@ namespace RIN_Console.SystemHelper
         protected override void setVul(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 11;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -281,7 +283,7 @@ namespace RIN_Console.SystemHelper
         protected override int getChar()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 12;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -293,7 +295,7 @@ namespace RIN_Console.SystemHelper
         protected override void setChar(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 13;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -306,7 +308,7 @@ namespace RIN_Console.SystemHelper
         protected override int getBO()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 14;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -332,7 +334,7 @@ namespace RIN_Console.SystemHelper
             String boS = bo + String.Empty;
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 14;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = boS;
             File.WriteAllLines(fName, arrLine);
@@ -341,7 +343,7 @@ namespace RIN_Console.SystemHelper
         protected override int getBN()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 15;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -366,7 +368,7 @@ namespace RIN_Console.SystemHelper
 
             String bnS = bn + String.Empty;
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 15;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -375,7 +377,7 @@ namespace RIN_Console.SystemHelper
         protected override int getBU()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 16;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -400,7 +402,7 @@ namespace RIN_Console.SystemHelper
 
             String buS = bu + String.Empty;
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 16;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -412,7 +414,7 @@ namespace RIN_Console.SystemHelper
         protected override int getDrtivost()
         {
             string fName = "SystemHelper/txt-char" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 17;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -424,7 +426,7 @@ namespace RIN_Console.SystemHelper
         protected override void setDrtivost(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 17;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -434,7 +436,7 @@ namespace RIN_Console.SystemHelper
         protected override int getNicivost()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 18;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -446,7 +448,7 @@ namespace RIN_Console.SystemHelper
         protected override void setNicivost(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 18;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -455,7 +457,7 @@ namespace RIN_Console.SystemHelper
         protected override int getPresnost()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 19;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -467,7 +469,7 @@ namespace RIN_Console.SystemHelper
         protected override void setPresnost(string newText)
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 19;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -499,7 +501,7 @@ namespace RIN_Console.SystemHelper
         protected override int getMaxTotalMP()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 21;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -513,7 +515,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 21;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -522,7 +524,7 @@ namespace RIN_Console.SystemHelper
         protected override int getTotalMP()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 22;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -536,7 +538,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 22;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -556,11 +558,6 @@ namespace RIN_Console.SystemHelper
                 magician = true;
         }
 
-        protected void haveMagicTalent()
-        {
-
-
-        }
 
         /*******************************   ŽIVOTY ****************************************************/
         /*********************************************************************************************/
@@ -568,7 +565,7 @@ namespace RIN_Console.SystemHelper
         protected override int getMaxTotalHP()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 23;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -582,7 +579,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 23;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -591,7 +588,7 @@ namespace RIN_Console.SystemHelper
         protected override int getTotalHP()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 24;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -605,7 +602,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 24;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -614,7 +611,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpLeveOko()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 25;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -627,7 +624,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 25;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -636,7 +633,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpPraveOko()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 26;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -649,7 +646,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 26;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -658,7 +655,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpUsta()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 27;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -671,7 +668,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 27;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -680,7 +677,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpLeveUcho()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 28;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -693,7 +690,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 28;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -702,7 +699,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpPraveUcho()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 29;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -715,7 +712,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 29;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -725,7 +722,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpNos()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 30;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -738,7 +735,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 30;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -748,7 +745,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpHlava()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 31;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -761,7 +758,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 31;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -771,7 +768,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpTorzo()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 32;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -785,7 +782,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 32;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -794,7 +791,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpLeveChodilo()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 33;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -803,12 +800,21 @@ namespace RIN_Console.SystemHelper
             }
 
         }
+        protected override void setHpLeveChodilo(string newText)
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 33;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+
+        }
 
 
         protected override int getHpLevaDlan()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 34;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -820,7 +826,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 34;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -829,7 +835,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpPravaDlan()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 35;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -843,7 +849,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 35;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -853,7 +859,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpPravaRuka()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 36;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -867,7 +873,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 36;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -877,7 +883,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpLevaRuka()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 37;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -891,7 +897,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 37;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -900,7 +906,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpLevaNoha()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 38;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -913,7 +919,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 38;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -923,7 +929,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpPravaNoha()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 39;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -937,7 +943,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 39;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -947,7 +953,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpLeveChodidlo()
         {
             string fName = "../../SystemHelper/txt-char/ " + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 40;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -961,7 +967,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 40;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -972,7 +978,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpPraveChodidlo()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 41;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -986,7 +992,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 41;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -997,7 +1003,7 @@ namespace RIN_Console.SystemHelper
         protected override int getHpTvar()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 42;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1011,17 +1017,36 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 42;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
         }
 
+        protected override int getHpKrk()
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 43;
+            using (var sr = new StreamReader(fName))
+            {
+                for (int i = 1; i < line; i++)
+                    sr.ReadLine();
+                return int.Parse(sr.ReadLine());
+            }
+        }
+        protected override void setHpKrk(string newText)
+        {
+            string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
+            int line = 43;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
         /*******************************   ZBROJ  ****************************************************/
         protected override int getZbHlava()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 44;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1035,7 +1060,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 44;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1045,7 +1070,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbTorzo()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 45;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1059,7 +1084,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 45;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1069,7 +1094,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbLevaChodidlo()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 46;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1083,7 +1108,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 46;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1093,7 +1118,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbPravaRukavice()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 47;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1107,7 +1132,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 47;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1118,7 +1143,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbLevaNoha()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 48;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1132,7 +1157,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 48;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1142,7 +1167,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbPravaNoha()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 49;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1156,7 +1181,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 49;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1166,7 +1191,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbLeveChodidlo()
         {
             string fName = "../../SystemHelper/txt-char/ " + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 50;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1180,7 +1205,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 50;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1191,7 +1216,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbPraveChodidlo()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 51;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1205,7 +1230,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 51;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1215,7 +1240,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbStit()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 52;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1229,7 +1254,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 52;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
@@ -1239,7 +1264,7 @@ namespace RIN_Console.SystemHelper
         protected override int getZbTvar()
         {
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 53;
             using (var sr = new StreamReader(fName))
             {
                 for (int i = 1; i < line; i++)
@@ -1253,7 +1278,7 @@ namespace RIN_Console.SystemHelper
         {
 
             string fName = "../../SystemHelper/txt-char/" + get_jmeno_() + ".txt";
-            int line = 20;
+            int line = 53;
             string[] arrLine = File.ReadAllLines(fName);
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);

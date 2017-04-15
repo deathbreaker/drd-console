@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,7 +53,7 @@
     <Compile Include="SystemHelper\characters\Jerrynek.cs" />
     <Compile Include="SystemHelper\characters\Melichar.cs" />
     <Compile Include="SystemHelper\characters\Teclis.cs" />
-    <Compile Include="SystemHelper\characters\Tomas.cs" />
+    <Compile Include="SystemHelper\characters\Matej.cs" />
     <Compile Include="SystemHelper\Kostka.cs" />
     <Compile Include="SystemHelper\Monster.cs" />
     <Compile Include="SystemHelper\NPC.cs" />
@@ -75,6 +76,7 @@
     <Content Include="SystemHelper\txt-char\Jerrynek.txt" />
     <Content Include="SystemHelper\txt-char\Melichar.txt" />
     <Content Include="SystemHelper\txt-char\Teclis.txt" />
+    <Content Include="SystemHelper\txt-char\TestArtym.txt" />
     <Content Include="SystemHelper\txt-char\Tomas.txt" />
   </ItemGroup>
   <ItemGroup>
