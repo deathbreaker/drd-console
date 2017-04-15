@@ -12,7 +12,7 @@ namespace RIN_Console
             //Console.WriteLine("╔═╗");
             //Console.WriteLine("╚═╝");
 
-        Program Prg = new Program();
+            Program Prg = new Program();
             Prg.preloader();
 
             SystemHelper.Being Batrachus = new SystemHelper.Being();
@@ -34,8 +34,7 @@ namespace RIN_Console
             Console.WriteLine();
             Console.WriteLine("Nyní uvidíte výpis z txt souboru =>");
             typeLine("Jméno herního charakteru je: ");
-            //Console.WriteLine(Batrachus.getJmeno());
-            //Batrachus.setJmeno("_Batrachus_");
+
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(Batrachus.getJmeno());
             Console.ResetColor();
@@ -85,12 +84,10 @@ namespace RIN_Console
             threadProgrBar.Priority = ThreadPriority.AboveNormal;
             threadSketchIn.Priority = ThreadPriority.BelowNormal;
             threadTheRestLines.Priority = ThreadPriority.Lowest;
-
             threadSketchTitle.Start();                          //vykreslí velký nadpis RIN CONSOLE
             threadProgrBar.Start();                             //vykreslí 'progress bar' a bude pracovat na načítání celé aplikace
             threadSketchIn.Start();                             //vykreslí zbytek řádku u 'progress bar'
             threadTheRestLines.Start();                         //vykreslí zbytek řádků pod 'progress bar'
-
             //AboveNormal; ThreadPriority.Lowest ThreadPriority.BelowNormal. BelowNormal Highest 
             */
 
@@ -152,11 +149,11 @@ namespace RIN_Console
 
             writeRow();
         }
-          
+
         static void secondHalfOfScreen()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
-           
+
             // 30 - 12 = 18 => (celkový počet řádku v konzoli ve výchozí velikosti) - (mezera před prealoder nadpisem) =(zbylé volné řádky)
             // 30 - 18 =  5
             // 12 + 5 = 17
@@ -245,7 +242,7 @@ namespace RIN_Console
 
                     Console.WriteLine(new string('═', 120 - 1));
                     Console.WriteLine();
-                    Console.WriteLine("                                                         KREDITS                                                     ");
+                    Console.WriteLine("                                                         CREDITS                                                     ");
                     Console.WriteLine("                 Copyright © 2017 RIN RPG System programmig and idea was created by František Petko                  ");
                     Console.WriteLine("         Special thanks to examples of codes inspiration on website www.devbook.cz, stack overflow and my friends!   ");
                     Console.WriteLine("                                    That help was made this incredible console app!                                  ");
@@ -303,44 +300,33 @@ namespace RIN_Console
             for (int l = 46; l > 0; l--)
             {
                 //Foreground = DarkGray
-
                  //Background = DakrGray
                     //Foreground = DarkMagenta
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     Console.BackgroundColor = ConsoleColor.DarkGray;
-
                 }
-
                     using (var progress = new ProgressBar())
                     {
                            Console.ResetColor();
                            Console.BackgroundColor = ConsoleColor.DarkGray;
                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-
                            for (int i = 0; i <= 100; i++)
                            {
                                   progress.Report((double)i / 100);
                                   Thread.Sleep(20);
                            }
-
                           
                      }
-
             Console.Write("Done.");
-
             for (int s= 46; s>0; s--)
             {
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     Console.Write("█");
-
             }
-
             Thread.Yield();
             Console.ResetColor();
-
         }
       */
     }
 
 }
-

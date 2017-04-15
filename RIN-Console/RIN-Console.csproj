@@ -54,6 +54,7 @@
     <Compile Include="SystemHelper\characters\Teclis.cs" />
     <Compile Include="SystemHelper\characters\Tomas.cs" />
     <Compile Include="SystemHelper\Kostka.cs" />
+    <Compile Include="SystemHelper\Monster.cs" />
     <Compile Include="SystemHelper\NPC.cs" />
     <Compile Include="SystemHelper\Being.cs" />
     <Compile Include="SystemHelper\Souboj.cs" />
