@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace RIN_Console.SystemHelper
 {
     class Souboj
     {
-        
-
         private Being hrac;
 
         private Being nepritel;
 
         private Kostka kostka;
-
 
         public Souboj(Being hrac, Being nepritel, Kostka kostka)
         {
@@ -21,7 +17,6 @@ namespace RIN_Console.SystemHelper
             this.nepritel = nepritel;
             this.kostka = kostka;
         }
-
 
         public void Zapas()
         {
@@ -44,6 +39,8 @@ namespace RIN_Console.SystemHelper
             {
                 h.Utoc(n);
                 Vykresli();
+                VypisZpravu(n.VratPosledniZpravu()); // zpráva o využití bodů osudu
+                
                 VypisZpravu(h.VratPosledniZpravu()); // zpráva o útoku
                 VypisZpravu(n.VratPosledniZpravu()); // zpráva o obraně                  
                 if (n.Nazivu())

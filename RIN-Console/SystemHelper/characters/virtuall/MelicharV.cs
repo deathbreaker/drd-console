@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RIN_Console.SystemHelper.characters
+namespace RIN_Console.SystemHelper.characters.virtuall
 {
-    class Melichar: Being, Alchymista
+    class MelicharV: Being, Alchymista
     {
     }
 }

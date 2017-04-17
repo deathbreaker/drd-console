@@ -6,12 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RIN_Console.SystemHelper.characters
+namespace RIN_Console.SystemHelper.characters.staticc
 {
-    class Batrachus: Being, Kouzelnik
+    class Batrachus: Kouzelnik
     {
         private static string character = "Batrachus";
 
+        private static int zpHP = 4;          //základní počet HP u daného herního povolání
+
+        private static int levelHPModif = -1;
 
 
         Kostka sestiStenka = new Kostka(6);

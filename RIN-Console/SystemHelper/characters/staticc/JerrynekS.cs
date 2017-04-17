@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RIN_Console.SystemHelper.characters
+namespace RIN_Console.SystemHelper.characters.staticc
 {
-    class Teclis: Being, Saman
+    class Jerrynek: Being, Valecnik
     {
     }
 }

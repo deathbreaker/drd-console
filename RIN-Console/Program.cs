@@ -8,62 +8,45 @@ namespace RIN_Console
     {
         private static bool isclosing = false;
 
-        private static int zpHP = 6;          //základní počet HP u daného herního povolání
-
-        private static int levelHPModif = 0;
         static void Main(string[] args)
         {
             //Console.WriteLine("╔═╗");
             //Console.WriteLine("╚═╝");
+            //Proč potřebujeme virtuální a statické třídy? Aby jsme využívat ukládání hodnot do txt a zároveň pracovat objektově s charaktery ( s virtuálníma třidama)
+            //1. vytvoření výchozích virtuálních instancí s nějakýma hodnotama
+            //2: vytvoření txt class
+            //3. přenos informací z txt class do virtuálních instancí
+            //4. práce s virtuálníma instancema
 
             Program Prg = new Program();
             Prg.preloader();
+            Console.Clear();
 
-            SystemHelper.characters.Artym TestArtym = new SystemHelper.characters.Artym();
-            TestArtym.setJmeno("TestArtym");
 
-            if (TestArtym.getJmeno() != null)
-            {
+            SystemHelper.characters.virtuall.ArtymV ArtymV = new SystemHelper.characters.virtuall.ArtymV();
+            //ArtymV.DBdropTable();
+            //ArtymV.DBInit();
+            //Console.WriteLine("Úspěšně se zapsalo do databáze !! :-)");
+            Console.WriteLine("Nyní uvidíte data z DB.");
+            Console.ForegroundColor = ConsoleColor.Red;
+            ArtymV.DBbringDataToTerm();
+            Console.ResetColor();
 
-                SystemHelper.characters.Artym Artym = new SystemHelper.characters.Artym("Artym");
-                
-                SystemHelper.characters.Batrachus Batrachus = new SystemHelper.characters.Batrachus();
-                SystemHelper.characters.Jerrynek Jerrynek = new SystemHelper.characters.Jerrynek();
-                SystemHelper.characters.Matej Matej = new SystemHelper.characters.Matej();
-                SystemHelper.characters.Melichar Melichar = new SystemHelper.characters.Melichar();
-                SystemHelper.characters.Teclis Teclis = new SystemHelper.characters.Teclis();
-
-                Batrachus.setJmeno("Batrachus");
-                Console.Clear();
-                //progrBar();
-                //Console.Clear();
-                Console.WriteLine("Výpis z programu.");
-                Console.WriteLine();
-                Console.WriteLine("Nyní uvidíte výpis z txt souboru =>");
-                typeLine("Jméno herního charakteru je: ");
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(Batrachus.getJmeno());
-                Console.ResetColor();
-                Console.WriteLine();
-                Console.WriteLine("Nyní uvidíte výpis ascii tabulky =>");
-                String[] pole = { "Jmeno", "DalsiJmeno", "ZaseJmeno" };
-                Table.PrintLine();
-                Table.PrintRow(pole);
-                Table.PrintLine();
-                Table.PrintRow(pole);
-                Table.PrintRow(pole);
-                Table.PrintRow(pole);
-                Table.PrintLine();
-                Thread.Sleep(1000);
-                Console.WriteLine();
-                Console.WriteLine("Toto je zatím vše co program umí :) ");
-
-            }
-
+            Console.WriteLine();
+            Console.WriteLine("Nyní uvidíte výpis ascii tabulky =>");
+            String[] pole = { "Jmeno", "DalsiJmeno", "ZaseJmeno" };
+            Table.PrintLine();
+            Table.PrintRow(pole);
+            Table.PrintLine();
+            Table.PrintRow(pole);
+            Table.PrintRow(pole);
+            Table.PrintRow(pole);
+            Table.PrintLine();
+            Thread.Sleep(1000);
+            Console.WriteLine();
+            Console.WriteLine("Toto je zatím vše co program umí :) ");
 
             Console.Clear();
-            Console.WriteLine("Aktuálně nejsou vytvořený statistiky postav ..");
                 
             SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
 
@@ -248,6 +231,9 @@ namespace RIN_Console
 
                 case CtrlTypes.CTRL_CLOSE_EVENT:
                     isclosing = true;
+
+
+
                     Console.Clear();
                     Console.WriteLine();
                     Console.WriteLine();

@@ -1,149 +1,20 @@
 ﻿using RIN_Console.SystemHelper.trade;
-using System.IO;
 using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace RIN_Console.SystemHelper.characters
+namespace RIN_Console.SystemHelper.characters.virtuall
 {
-    class Artym: Architekt
+    class BatrachusV: Being, Kouzelnik
     {
-
-        public int magenergie { get; set; }
-        public int dosah { get; set; }
-        public int rozsah { get; set; }
-        public int vyvolavani { get; set; }
-        public int trvani { get; set; }
-        public int prvdKouzla { get; set; }
-        public int pocetKouzel { get; set; }
+        private static string character = "Batrachus";
 
         private static int zpHP = 4;          //základní počet HP u daného herního povolání
 
         private static int levelHPModif = -1;
-
-        private static string character = "Artym";
-
-        public Artym(){}
-
-        public Artym(string jmeno)
-        {
-                setJmeno(jmeno);
-                setUroven("4");
-                defaultInitHP(zpHP, levelHPModif);
-                    string actMana = string.Empty + valueManaPerLevel(getUroven(), getVul(), 0.6);
-                setMaxTotalMP(actMana);
-                setRasa("Člověk");
-                setTrade("Architekt");
-                setZK("0");
-                setSil("");
-                setObr("");
-                setZruc("");
-                setOdl("");
-                setRoz("");
-                setDuvt("");
-                setVul("");
-                setChar("");
-                setBO("2");
-                setBN("1");
-                setBU("1");
-
-                    string presnost = getZruc() + 5 + string.Empty;
-                setPresnost(presnost);
-                    string vyhnuti = getObr() + 5 + string.Empty;
-                setVyhnuti(vyhnuti);
-
-                setJmenoZbrane("Dvě dýky");
-                setVydrzZbrane("20");
-                setPruraznost("2");
-                setNicivost("0");
-
-                
-                    
-        }
-
-        public string getJmeno()
-        {
-            string fName = "../../SystemHelper/txt-char/" + character + ".txt";
-            int line = 0;
-            using (var sr = new StreamReader(fName))
-            {
-                for (int i = 1; i < line; i++)
-                    sr.ReadLine();
-
-                //jmeno = sr.ReadLine();
-
-                return sr.ReadLine();
-            }
-
-        }
-
-        public void setJmeno(string newText)
-        {
-            string fName = "../../SystemHelper/txt-char/" + character + ".txt";
-            int line = 0;
-            string[] arrLine = File.ReadAllLines(fName);
-            arrLine[line - 1] = newText;
-            File.WriteAllLines(fName, arrLine);
-        }
-
-        public void passPrideBeforeFall()
-        {
-            
-        }
-        
-
-        public void passFocusingEgoism(){}
-
-        public void passSenseDanger(){}
-
-        public void passSenseTrue(){}
-
-        public void passSenseLie(){}
-
-        public void passSenseHalfTrue(){}
-        public void passInstablesness(){}
-
-        public void actTrickeryBlessing(){}
-
-        public void actGreenCard(){}
-
-        public void actFortOL(){}
-
-        public void actStrogngoldOL(){}
-
-        public void actCastleOL(){}
-
-        public void actCitadelOL(){}
-
-        public void PalaceOL(){}
-
-        public void demolitionOC(){}
-
-        public void portrayalOP(){}
-
-        public void inversionOI(){}
-
-        public void bashFG(){}
-
-        public void fateTransfer(){}
-
-        public void split(){}
-
-        public void ilussionShield(){}
-
-        public void triumphOfForce(){}
-
-        public void adabtiableObject(){}
-
-        public void adaptableObject(){}
-
-        public void adaptableLObject(){}
-
-        public void falseSight(){}
-
-        public void painConversion(){}
-
-
 
 
         Kostka sestiStenka = new Kostka(6);
@@ -222,6 +93,68 @@ namespace RIN_Console.SystemHelper.characters
 
         //schopnosti hráčského povolaní a dovednosti
 
+        public BatrachusV() { }
+
+        public BatrachusV(string jmeno)
+        {
+            setJmeno(jmeno);
+            setUroven("4");
+            defaultInitHP(zpHP, levelHPModif);
+            string actMana = string.Empty + valueManaPerLevel(getUroven(), getVul(), 0.6);
+            setMaxTotalMP(actMana);
+            setRasa("Člověk");
+            setTrade("Architekt");
+            setZK("0");
+            setSil("");
+            setObr("");
+            setZruc("");
+            setOdl("");
+            setRoz("");
+            setDuvt("");
+            setVul("");
+            setChar("");
+            setBO("2");
+            setBN("1");
+            setBU("1");
+
+            string presnost = getZruc() + 5 + string.Empty;
+            setPresnost(presnost);
+            string vyhnuti = getObr() + 5 + string.Empty;
+            setVyhnuti(vyhnuti);
+
+            setJmenoZbrane("Dvě dýky");
+            setVydrzZbrane("20");
+            setPruraznost("2");
+            setNicivost("0");
+
+
+
+        }
+
+        public string getJmeno()
+        {
+            string fName = "../../SystemHelper/txt-char/" + character + ".txt";
+            int line = 0;
+            using (var sr = new StreamReader(fName))
+            {
+                for (int i = 1; i < line; i++)
+                    sr.ReadLine();
+
+                //jmeno = sr.ReadLine();
+
+                return sr.ReadLine();
+            }
+
+        }
+
+        public void setJmeno(string newText)
+        {
+            string fName = "../../SystemHelper/txt-char/" + character + ".txt";
+            int line = 0;
+            string[] arrLine = File.ReadAllLines(fName);
+            arrLine[line - 1] = newText;
+            File.WriteAllLines(fName, arrLine);
+        }
 
 
         public void defaultInitHP(int zpHP, int levelHPModif)
@@ -2267,7 +2200,5 @@ namespace RIN_Console.SystemHelper.characters
             arrLine[line - 1] = newText;
             File.WriteAllLines(fName, arrLine);
         }
-
-
     }
 }

@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,12 +51,18 @@
     <Compile Include="ProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Example.cs" />
-    <Compile Include="SystemHelper\characters\Artym.cs" />
-    <Compile Include="SystemHelper\characters\Batrachus.cs" />
-    <Compile Include="SystemHelper\characters\Jerrynek.cs" />
-    <Compile Include="SystemHelper\characters\Melichar.cs" />
-    <Compile Include="SystemHelper\characters\Teclis.cs" />
-    <Compile Include="SystemHelper\characters\Matej.cs" />
+    <Compile Include="SystemHelper\characters\staticc\ArtymS.cs" />
+    <Compile Include="SystemHelper\characters\staticc\BatrachusS.cs" />
+    <Compile Include="SystemHelper\characters\staticc\JerrynekS.cs" />
+    <Compile Include="SystemHelper\characters\staticc\MelicharS.cs" />
+    <Compile Include="SystemHelper\characters\staticc\TeclisS.cs" />
+    <Compile Include="SystemHelper\characters\staticc\MatejS.cs" />
+    <Compile Include="SystemHelper\characters\virtuall\ArtymV.cs" />
+    <Compile Include="SystemHelper\characters\virtuall\BatrachuV.cs" />
+    <Compile Include="SystemHelper\characters\virtuall\JerrynekV.cs" />
+    <Compile Include="SystemHelper\characters\virtuall\MatejV.cs" />
+    <Compile Include="SystemHelper\characters\virtuall\MelicharV.cs" />
+    <Compile Include="SystemHelper\characters\virtuall\TeclisV.cs" />
     <Compile Include="SystemHelper\Kostka.cs" />
     <Compile Include="SystemHelper\Monster.cs" />
     <Compile Include="SystemHelper\NPC.cs" />
@@ -66,6 +75,7 @@
     <Compile Include="SystemHelper\trade\Kouzelnik.cs" />
     <Compile Include="SystemHelper\trade\Valecnik.cs" />
     <Compile Include="Table.cs" />
+    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
