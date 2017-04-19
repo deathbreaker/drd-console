@@ -1,12 +1,14 @@
 ﻿using RIN_Console.SystemHelper.trade;
 using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace RIN_Console.SystemHelper.characters.virtuall
 {
-    class ArtymV: Being, Architekt
+    class ArtymV : Being, Architekt
     {
-        
+        SQLiteConnection sql_con;
+
         //protected string rasa;  //0
         //protected string povolani; //1
         //protected string specializace; //2
@@ -80,36 +82,23 @@ namespace RIN_Console.SystemHelper.characters.virtuall
         public int trvani { get; set; }
         public int prvdKouzla { get; set; }
         public int pocetKouzel { get; set; }
-      //35
+        //35
 
         private static int zpHP = 4;          //základní počet HP u daného herního povolání
 
         private static int levelHPModif = -1;
 
 
-        public ArtymV()
-        {
-
+        public ArtymV(){
         }
-        /*
-        public ArtymV( string jmeno, string rasa, string povolani, string specializace, int uroven, int zk, int sil, int obr, 
-            int zruc, int vit, int roz, int duvt, int vul, int cha, int bo, int bn, int bu, string zbran, int presnost, int vyhnuti,
-            int pruraznost, int nicivost, int vydrzZbrane, int HpTvar, int HpNos, int HpLeveOko, int HpPraveOko, int HpUsta,
-            int HpLeveUcho, int HpPraveUcho, int HpPravaNoha, int HpTorzo, int HpLevaRuka, int HpLevaNoha, 
-            int HpPravaRuka, int HpLevaDlan, int HpPravaDlan, int HpKrk, int HpLeveChodidlo, int HpPraveChodidlo, int HpHlava, 
-            int ZbTorzo, int ZbLevaDlan, int ZbPravaDlan, int ZbLeveChodidlo, int ZbPraveChodidlo,
-            int ZbHlava, int ZbNohy, int ZbTvar): base( jmeno,  rasa,  povolani,  specializace,  uroven,  zk, sil,  obr,  zruc,  
-                vit,  roz, duvt, vul, cha, bo, bn, bu, zbran, presnost, vyhnuti, pruraznost, nicivost, vydrzZbrane, HpTvar,
-                HpNos, HpLeveOko, HpPraveOko, HpUsta, HpLeveUcho, HpPraveUcho, HpLevaNoha, HpPravaNoha, HpTorzo, HpLevaRuka,
-                HpPravaRuka,  HpLevaDlan, HpPravaDlan, HpKrk, HpLeveChodidlo, HpPraveChodidlo, HpHlava, ZbNohy,  
-                ZbTorzo, ZbLevaDlan, ZbPravaDlan,  ZbLeveChodidlo,  ZbPraveChodidlo, ZbHlava, ZbNohy, ZbTvar)
-        {
 
-            defaultInitHP();
-            //valueManaPerLevel();
+        public ArtymV(int ID)
+        {
+            id = ID;
+
+           
         }
-        */
-        
+
 
         public void passPrideBeforeFall()
         {
@@ -168,53 +157,24 @@ namespace RIN_Console.SystemHelper.characters.virtuall
 
         public void painConversion(){}
 
-        public void DBdropTable()
+
+
+
+        public void DBinsertDataToDatabase()
         {
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-            m_dbConnection.Open();
-
-            string sql = " DROP Table 'characters'";
-            //m_dbConnection.CommandText = ;
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-        }
-
-
-        public void DBInit()
-        {
-            SQLiteConnection.CreateFile("DB_RIN-Console.sqlite");
-
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
-            m_dbConnection.Open();
-
-            string sql = "create table characters (jmeno varchar(20), rasa varchar(20), povolani varchar(20), specializace varchar(20), uroven int, zk int, sil int, silOprava int, obr int, obrOprava int, zruc, zrucOprava int, vit int, vitOprava int, roz int, rozOprava int, dum int, dumOprava int, vul int, vulOprava int, cha int, chaOprava int, bo int, bm int, bu int, zbran varchar(20), presnost int, vyhnuti int, krvaceni int, infekce int, dychani int , filtrace int, pruraznost int, nicivost int, bodani int, sekani int, drtivost int, ozbrojeni int, ohen int, blesky int, mraz int, rychlost int, omraceni int, vydrzZbrane int, hp int, maxHP int, mp int, maxMP int, HpTvar int, HpNos int, HpLeveOko int, HpPraveOko int, HpUsta int, HpLeveUcho int, HpPraveUcho int, HpLevaNoha int, HpPravaNoha int, HpTorzo int, HpLevaRuka int, HpPravaRuka int, HpLevaDlan int, HpPravaDlan int, HpKrk int, HpLeveChodidlo int, HpPraveChodidlo int, HpHlava int, ZbNohy int, ZbTorzo int, ZbLevaDlan int, ZbPravaDlan int, ZbLeveChodidlo int, ZbPraveChodidlo int, ZbHlava int, ZbTvar int, HpPrstyLeveRuky int, HpPrstyPraveRuky int, HpPalecLeveRuky int, HpPalecPraveRuky int, HpPrstyLevehoChodidla int,  HpPrstyPravehoChodidla int,HpPalecLevehoChodidla int, HpPalecPravehoChodidla int)";
-
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-
-            command.ExecuteNonQuery();
-            //vložení do DB herní charakter Artym
-            sql = "insert into characters (jmeno , rasa , povolani , specializace , uroven , zk , sil , silOprava , obr , obrOprava , zruc, zrucOprava , vit , vitOprava , roz , rozOprava , dum , dumOprava , vul , vulOprava , cha , chaOprava, bo , bm , bu , zbran , presnost , vyhnuti , krvaceni , infekce , dychani  , filtrace , pruraznost , nicivost , bodani , sekani , drtivost , ozbrojeni , ohen , blesky , mraz ,  rychlost , omraceni , vydrzZbrane , hp , maxHP , mp , maxMP , HpTvar , HpNos , HpLeveOko , HpPraveOko , HpUsta , HpLeveUcho , HpPraveUcho , HpLevaNoha , HpPravaNoha , HpTorzo , HpLevaRuka , HpPravaRuka , HpLevaDlan , HpPravaDlan , HpKrk , HpLeveChodidlo , HpPraveChodidlo , HpHlava , ZbNohy , ZbTorzo , ZbLevaDlan , ZbPravaDlan , ZbLeveChodidlo , ZbPraveChodidlo , ZbHlava , ZbTvar, HpPrstyLeveRuky, HpPrstyPraveRuky, HpPalecLeveRuky, HpPalecPraveRuky, HpPrstyLevehoChodidla, HpPrstyPravehoChodidla, HpPalecLevehoChodidla, HpPalecPravehoChodidla) values ('Artym', 'Člověk', 'Architekt', '-', 1, 0, 16, 2, 14, 1, 15, 2, 13, 1, 11, 0, 12, 0, 17, 3, 18, 3, 2, 1, 1, 'Dvě dýky', 7, 6, 10, 10, 10, 10, 2, 0, 2, 3, 0, 2, 0, 0, 0, 3, 0, 21, 16, 16, 42, 42, 3, 2, 0, 5, 5, 3, 3, 10, 10, 10, 10, 10, 5, 5, 4, 5, 5, 10, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 4, 4, 1, 1)";
-
-
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-
-            m_dbConnection.Close();
-        }
-
-        public void DBbringDataToTerm()
-        {
-        //SQLiteConnection  = new SQLiteConnection("Data Source=c:\\Dev\\MYApp.sqlite;Version=3;New=False;Compress=True;");
-            SQLiteConnection sql_con = new SQLiteConnection("Data Source=MyDatabase.sqlite;Version=3;");
+            sql_con = new SQLiteConnection("Data Source=DB_RIN-Console.sqlite;Version=3;");
             sql_con.Open();
-            string sql = "select * from characters";
-            SQLiteCommand command = new SQLiteCommand(sql, sql_con);
-            SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-                Console.WriteLine("Jméno: " + reader["jmeno"] + "\tRasa: " + reader["rasa"]);
 
-            Console.ReadKey();
+            String sql = "insert into characters (id, jmeno , rasa , povolani , specializace , uroven , zk , sil , silOprava , obr , obrOprava , zruc, zrucOprava , vit , vitOprava , roz , rozOprava , dum , dumOprava , vul , vulOprava , cha , chaOprava, bo , bm , bu , zbran , presnost , vyhnuti , krvaceni , infekce , dychani  , filtrace , pruraznost , nicivost , bodani , sekani , drtivost , ozbrojeni , ohen , blesky , mraz ,  rychlost , omraceni , vydrzZbrane , hp , maxHP , mp , maxMP , HpTvar , HpNos , HpLeveOko , HpPraveOko , HpUsta , HpLeveUcho , HpPraveUcho , HpLevaNoha , HpPravaNoha , HpTorzo , HpLevaRuka , HpPravaRuka , HpLevaDlan , HpPravaDlan , HpKrk , HpLeveChodidlo , HpPraveChodidlo , HpHlava , ZbNohy , ZbTorzo , ZbLevaDlan , ZbPravaDlan , ZbLeveChodidlo , ZbPraveChodidlo , ZbHlava , ZbTvar, HpPrstyLeveRuky, HpPrstyPraveRuky, HpPalecLeveRuky, HpPalecPraveRuky, HpPrstyLevehoChodidla, HpPrstyPravehoChodidla, HpPalecLevehoChodidla, HpPalecPravehoChodidla, ZbStit) values (1, 'Artym', 'Člověk', 'Architekt', '-', 1, 0, 16, 2, 14, 1, 15, 2, 13, 1, 11, 0, 12, 0, 17, 3, 18, 3, 2, 1, 1, 'Dvě dýky', 7, 6, 10, 10, 10, 10, 2, 0, 2, 3, 0, 2, 0, 0, 0, 3, 0, 21, 16, 16, 42, 42, 3, 2, 0, 5, 5, 3, 3, 10, 10, 10, 10, 10, 5, 5, 4, 5, 5, 10, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1, 4, 4, 1, 1, 0)";
+
+            SQLiteCommand command = new SQLiteCommand(sql, sql_con);
+            command.ExecuteNonQuery();
+
+            sql_con.Close();
+
         }
+
+
 
 
         public void defaultInitHP()

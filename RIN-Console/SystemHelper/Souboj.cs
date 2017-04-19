@@ -58,14 +58,14 @@ namespace RIN_Console.SystemHelper
         {
             Console.WriteLine(b);
             Console.Write("Zivot: ");
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(b.GrafickyZivot());
             Console.ResetColor();
             if (b.getStateMagician())
             {
                 Console.Write("Mana:  ");
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.WriteLine(b.GrafickaMana());
                 Console.ResetColor();

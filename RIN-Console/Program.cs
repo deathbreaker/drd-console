@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Linq;
 
 namespace RIN_Console
 {
@@ -23,13 +24,38 @@ namespace RIN_Console
             Console.Clear();
 
 
-            SystemHelper.characters.virtuall.ArtymV ArtymV = new SystemHelper.characters.virtuall.ArtymV();
-            //ArtymV.DBdropTable();
-            //ArtymV.DBInit();
+            SystemHelper.characters.virtuall.ArtymV Artym = new SystemHelper.characters.virtuall.ArtymV(1);
+            //SystemHelper.characters.virtuall.BatrachusV Batrachus = new SystemHelper.characters.virtuall.BatrachusV();
+            SystemHelper.Being Being = new SystemHelper.Being();
+
+            //Being.DBdropTable();
+            //Being.DBInit();         //Vytvoření tabulky v DB
+
+            //Artym.DBinsertDataToDatabase();     // Vytvoření výchozích dat u herní postavy Artym
+            //Batrachus.DBinsertDataToDatabase();
+
+            Console.WriteLine("Jmeno Artyma z DB: "+ Artym.DBgetValueS("jmeno"));
+            Console.WriteLine("Nyní napiště jak chcete Artymovo jméno v DB změnit");
+            string zmena = Console.ReadLine();
+            Artym.DBsetValuerS("jmeno", zmena);
+            //Artym.UpdatePlayerString("jmeno", zmena);
+            //SystemHelper.Being.Player= Artym.LoadPlayer();
+            //string search = "jmeno";
+            //string x = SystemHelper.Being.Player.Find(SystemHelper.Being.Player.x => Being.Player.x.jmeno.Contains("Artym"));
+            //string value = SystemHelper.Being.Player.Select(c => c.jmeno) + string.Empty;
+
+            Console.WriteLine("Jmeno Artyma z DB: " + Artym.DBgetValueS("jmeno"));
+            Console.WriteLine();
+            Console.WriteLine("Viděli jste dosavadní preview této aplikace :-)");
+
+
             //Console.WriteLine("Úspěšně se zapsalo do databáze !! :-)");
-            Console.WriteLine("Nyní uvidíte data z DB.");
+            //Console.WriteLine("Nyní uvidíte data z DB.");
             Console.ForegroundColor = ConsoleColor.Red;
-            ArtymV.DBbringDataToTerm();
+            //Artym.DBbringDataToTerm();
+            //Batrachus.DBbringDataToTerm();
+
+
             Console.ResetColor();
 
             Console.WriteLine();
@@ -45,17 +71,14 @@ namespace RIN_Console
             Thread.Sleep(1000);
             Console.WriteLine();
             Console.WriteLine("Toto je zatím vše co program umí :) ");
-
-            Console.Clear();
-                
-            SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
-
+            do
+            {
+                SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
+            }
             while (!isclosing) ;
 
-            Console.ReadKey();
+
         }
-
-
 
 
         private void preloader()
@@ -67,11 +90,6 @@ namespace RIN_Console
             //Thread threadTheRestLines = new Thread(new ThreadStart(runSketchInTheRestLines));
             //Thread runSketchInDIffSpecLinee = new Thread(new ThreadStart(runSketchInDIffSpecLine));
             //Thread threadSketchTitle = new Thread(new ThreadStart(runSketchTitle));
-
-            // n = 25
-
-
-
 
             //Console.Write("█");
             //Console.Write("█\r\n");
@@ -231,8 +249,6 @@ namespace RIN_Console
 
                 case CtrlTypes.CTRL_CLOSE_EVENT:
                     isclosing = true;
-
-
 
                     Console.Clear();
                     Console.WriteLine();

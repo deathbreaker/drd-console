@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="mono.data.sqlite">
+      <HintPath>..\mono.data.sqlite.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
@@ -58,7 +61,7 @@
     <Compile Include="SystemHelper\characters\staticc\TeclisS.cs" />
     <Compile Include="SystemHelper\characters\staticc\MatejS.cs" />
     <Compile Include="SystemHelper\characters\virtuall\ArtymV.cs" />
-    <Compile Include="SystemHelper\characters\virtuall\BatrachuV.cs" />
+    <Compile Include="SystemHelper\characters\virtuall\BatrachusV.cs" />
     <Compile Include="SystemHelper\characters\virtuall\JerrynekV.cs" />
     <Compile Include="SystemHelper\characters\virtuall\MatejV.cs" />
     <Compile Include="SystemHelper\characters\virtuall\MelicharV.cs" />

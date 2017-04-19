@@ -6,3 +6,4 @@ D:\Sites\projekty\RIN-Console\RIN-Console\obj\Debug\RIN-Console.exe
 D:\Sites\projekty\RIN-Console\RIN-Console\obj\Debug\RIN-Console.pdb
 D:\Sites\projekty\RIN-Console\RIN-Console\bin\Debug\System.Data.SQLite.dll
 D:\Sites\projekty\RIN-Console\RIN-Console\bin\Debug\System.Data.SQLite.xml
+D:\Sites\projekty\RIN-Console\RIN-Console\bin\Debug\mono.data.sqlite.dll
